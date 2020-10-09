@@ -1,10 +1,7 @@
-import React, { Component } from 'react'; //imrc
-import 'antd/dist/antd.css';
-import { Input, Button, List } from 'antd'
+import React, { Component } from 'react';
 import store from './store/'
-import { CHANGE_INPUT, ADD_ITEM, DELETE_ITEM } from './store/actionTypes'
-
-import { changeInputAction } from './store/actionCreators'
+import { changeInputAction, addInputAction, deleteInputAction } from './store/actionCreators'
+import TodoListUI from './TodoListUI'
 class TodoList extends Component {
     constructor(props) {
         super(props);
@@ -30,26 +27,7 @@ class TodoList extends Component {
 
     render() {
         return (
-            <div style={{ margin: '10px' }}>
-                <div>
-                    <Input
-                        style={{ width: '250px', marginRight: '10px' }}
-                        placeholder={this.state.inputValue}
-                        onChange={this.changeInputValue}
-                        value={this.state.inputValue}
-                    />
-                    <Button
-                        type="primary"
-                        onClick={this.clickBtn}
-                    >增加</Button>
-                </div>
-                <div style={{ margin: '10px', width: '300px' }}>
-                    <List bordered
-                        dataSource={this.state.list}
-                        renderItem={(item, index) => (<List.Item onClick={() => { this.removeBtn(index) }}>{item}</List.Item>)}
-                    />
-                </div>
-            </div>
+            <TodoListUI />
         );
     }
 }

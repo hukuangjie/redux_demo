@@ -10,7 +10,7 @@ const defaultState = {
 }
 export default (state = defaultState, action) => {
     console.log(state, action);
-    // R
+    // Reducer里只能接受state,不能改变state
     if (action.type === CHANGE_INPUT) {
         let newState = JSON.parse(JSON.stringify(state))  //深拷贝
         newState.inputValue = action.value
